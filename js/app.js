@@ -9,6 +9,7 @@ addButton.addEventListener('click', function () {
     clearInput();
 });
 
+// Aggiungo elementi con invio
 enterKey.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         e.preventDefault();
@@ -89,7 +90,7 @@ function emptyList() {
     while (toDoItems.length > 0) {
         toDoItems.item(0).remove();
     }
-
+    // eliminare chiave/valore nel local storage con il metodo clear()
     localStorage.clear();
 }
 
@@ -115,6 +116,7 @@ function saveList() {
 
 }
 
+// set timer per saveList e blocco timer
 
 function stopGoInterval() {
 
