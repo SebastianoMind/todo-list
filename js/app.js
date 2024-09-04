@@ -116,7 +116,7 @@ function saveList() {
 
 }
 
-// set timer per saveList e blocco timer
+// set timer per saveList e blocco timer 
 
 function stopGoInterval() {
 
