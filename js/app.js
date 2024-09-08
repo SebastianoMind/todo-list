@@ -5,10 +5,32 @@ addButton.addEventListener('click', function(){
   addToDoItem();
 });
 
+<<<<<<< Updated upstream
 let clearButton = document.getElementById('clear-completed-button');
 clearButton.addEventListener('click', function(){
   clearCompletedToDoItems();
 });
+=======
+enterKey.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        addToDoItem();
+        clearInput();
+
+    }
+})
+
+
+let loadButton = document.getElementById('load-button');
+loadButton.addEventListener('click', function () {
+    loadList();
+})
+
+let clearButton = document.getElementById('clear-completed-button')
+clearButton.addEventListener('click', function () {
+    clearCompletedToDoItems();
+})
+>>>>>>> Stashed changes
 
 let emptyButton = document.getElementById('empty-button');
 emptyButton.addEventListener('click', emptyList);
@@ -72,8 +94,43 @@ function emptyList(){
 function saveList(){
   let toDos = [];
 
+<<<<<<< Updated upstream
   for(let i = 0; i < toDoList.children.length; i++){
     let toDo = toDoList.children.item(i);
+=======
+function clearCompletedToDoItems() {
+    let completedItems = toDoList.getElementsByClassName('completed');
+    while (completedItems.length > 0) {
+        completedItems.item(0).remove();
+    }
+
+}
+
+function emptyList() {
+    let toDoItems = toDoList.children;
+
+    while (toDoItems.length > 0) {
+        toDoItems.item(0).remove();
+    }
+
+    localStorage.clear();
+}
+
+function saveList() {
+
+    let toDos = [];
+
+    for (let i = 0; i < toDoList.children.length; i++) {
+
+        let toDo = toDoList.children.item(i);
+
+        var toDoInfo = {
+            "task": toDo.innerText,
+            "completed": toDo.classList.contains('completed')
+        };
+
+        toDos.push(toDoInfo);
+>>>>>>> Stashed changes
 
     var toDoInfo = {
       "task" : toDo.innerText,
@@ -88,6 +145,7 @@ function saveList(){
   localStorage.setItem('toDos', JSON.stringify(toDos));
 }
 
+<<<<<<< Updated upstream
 function loadList(){
   if(localStorage.getItem('toDos') != null){
     let toDos = JSON.parse(localStorage.getItem('toDos'));
@@ -100,3 +158,39 @@ function loadList(){
 }
 
 loadList();
+=======
+
+
+
+
+function loadList() {
+
+    if (localStorage.getItem('toDos') != null) {
+        emptyList()
+        let toDos = JSON.parse(localStorage.getItem('toDos'));
+
+        for (let i = 0; i < toDos.length; i++) {
+            let toDo = toDos[i];
+            newToDoItem(toDo.task, toDo.completed);
+        }
+
+
+    }
+}
+
+function clearInput() {
+    document.getElementById('todo-entry-box').value = '';
+
+
+
+}
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
